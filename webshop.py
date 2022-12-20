@@ -33,16 +33,20 @@ class Database:
         #con_dml = sqlite3.connect(dml_path)
         #cur_ddl = con_ddl.cursor()
         #cur_dml = con_dml.cursor()
-        cur.execute('''CREATE TABLE stocks
-                       (date text, trans text, symbol text, qty real, price real)''')
-        con.commit()
-        with open(ddl_path, 'r') as f:
-            for line in f:
-                cur.execute(line)
+        #cur.execute('''CREATE TABLE stocks
+        #               (date text, trans text, symbol text, qty real, price real)''')
         
-        with open(dml_path, 'r') as f:
-            for line in f:
-                cur.execute(line)
+        #ddl_file = open("webshop-ddl.sql", 'r')
+        ddl_file = open(ddl_path, 'r')
+        #dml_file = open("webshop-dml.sql", 'r')
+        dml_file = open(dml_path, 'r')
+        
+        for line in ddl_file:
+            print(line)
+            cur.execute(line)
+
+        for line in dml_file:
+            cur.execute(line)
 
         con.commit()
         con.close()
