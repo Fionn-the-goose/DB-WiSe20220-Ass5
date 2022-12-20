@@ -24,7 +24,16 @@ class Database:
             self.initialize(Path(ddl_path), Path(dml_path))
 
     def initialize(self, ddl_path: Path, dml_path: Path):
-        con = sqlite3.connect(ddl_path);
+        con_ddl = sqlite3.connect(ddl_path)
+        con_dml = sqlite3.connect(dml_path)
+
+        cur_ddl = con_ddl.cursor()
+        cur_dml = con_dml.cursor()
+
+        for row in cur_ddl:
+            cur_ddl.execute(row)
+        for row in cur_dml:
+            cur_dml.execute(row)
         """ TODO Create the .sqlite database (self.database_path).
         TODO Create the schema by reading the ddl file line wise and executing the sql commands.
         TODO Insert all data by reading the dml file line wise and executing the sql commands.
