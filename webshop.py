@@ -24,18 +24,34 @@ class Database:
             self.initialize(Path(ddl_path), Path(dml_path))
 
     def initialize(self, ddl_path: Path, dml_path: Path):
-        con_ddl = sqlite3.connect(ddl_path)
-        con_dml = sqlite3.connect(dml_path)
+        """ TODO Create the .sqlite database (self.database_path)."""
+        con = sqlite3.connect(self.database_path)
+        cur = con.cursor()
 
-        cur_ddl = con_ddl.cursor()
-        cur_dml = con_dml.cursor()
+        #con_ddl = sqlite3.connect(ddl_path)
+        #con_dml = sqlite3.connect(dml_path)
+        #cur_ddl = con_ddl.cursor()
+        #cur_dml = con_dml.cursor()
+        cur.execute('''CREATE TABLE stocks
+                       (date text, trans text, symbol text, qty real, price real)''')
 
-        for row in cur_ddl:
-            cur_ddl.execute(row)
-        for row in cur_dml:
-            cur_dml.execute(row)
-        """ TODO Create the .sqlite database (self.database_path).
-        TODO Create the schema by reading the ddl file line wise and executing the sql commands.
+        con.commit()
+
+        with open('ddl_path', 'r') as f:
+            for line in f:
+                cur.execute(line)
+        
+        with open('dml_path', 'r') as f:
+            for line in f:
+                cur.execute(line)
+
+        con.commit()
+        con.close()
+        return None
+        #for row in cur_dml:
+        #    cur_dml.execute(row)
+
+        """TODO Create the schema by reading the ddl file line wise and executing the sql commands.
         TODO Insert all data by reading the dml file line wise and executing the sql commands.
 
         :param ddl_path: Path to the .sql file that contains the data definition commands.
