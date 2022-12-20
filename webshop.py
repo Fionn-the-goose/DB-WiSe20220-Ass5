@@ -25,6 +25,7 @@ class Database:
 
     def initialize(self, ddl_path: Path, dml_path: Path):
         """ TODO Create the .sqlite database (self.database_path)."""
+        #self.da
         con = sqlite3.connect(self.database_path)
         cur = con.cursor()
 
@@ -35,12 +36,11 @@ class Database:
         cur.execute('''CREATE TABLE stocks
                        (date text, trans text, symbol text, qty real, price real)''')
         con.commit()
-
-        with open('ddl_path', 'r') as f:
+        with open(ddl_path, 'r') as f:
             for line in f:
                 cur.execute(line)
         
-        with open('dml_path', 'r') as f:
+        with open(dml_path, 'r') as f:
             for line in f:
                 cur.execute(line)
 
