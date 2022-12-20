@@ -34,7 +34,6 @@ class Database:
         #cur_dml = con_dml.cursor()
         cur.execute('''CREATE TABLE stocks
                        (date text, trans text, symbol text, qty real, price real)''')
-
         con.commit()
 
         with open('ddl_path', 'r') as f:
