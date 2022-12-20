@@ -39,13 +39,14 @@ class Database:
         #ddl_file = open("webshop-ddl.sql", 'r')
         ddl_file = open(ddl_path, 'r')
         #dml_file = open("webshop-dml.sql", 'r')
-        dml_file = open(dml_path, 'r')
         
         for line in ddl_file:
-            print(line)
             cur.execute(line)
+        con.commit()
 
+        dml_file = open(dml_path, 'r')
         for line in dml_file:
+            print(line)
             cur.execute(line)
 
         con.commit()
