@@ -6,9 +6,9 @@ INSERT INTO Kunden(KundenNr, Adresse, Name, Vorname) VALUES(10000, 'Weimar Stras
 INSERT INTO Kunden(KundenNr, Adresse, Name, Vorname) VALUES(10001, 'Weimar Strasse_B Nr.12', 'Trojan', 'Marie');
 INSERT INTO Kunden(KundenNr, Adresse, Name, Vorname) VALUES(10002, 'Weimar Strasse_C Nr.9', 'Erickson', 'Fionn');
 
-INSERT INTO Produkt(ProduktNr, Name, Typ, Preis) VALUES('C-12', 'Negate', 'Magic-Karte', 1.99);
-INSERT INTO Produkt(ProduktNr, Name, Typ, Preis) VALUES('C-10', 'Der Ur-Drache', 'Magic_Karte', 129.99);
-INSERT INTO Produkt(ProduktNr, Name, Typ, Preis) VALUES('M-2', 'Killer Hamster', 'Plushie', 30.0);
+INSERT INTO Produkt(ProduktNr, Name, Typ, Preis, Award) VALUES('C-12', 'Negate', 'Magic-Karte', 1.99, 'Most Hated');
+INSERT INTO Produkt(ProduktNr, Name, Typ, Preis, Award) VALUES('C-10', 'Der Ur-Drache', 'Magic_Karte', 129.99, 'none');
+INSERT INTO Produkt(ProduktNr, Name, Typ, Preis, Award) VALUES('M-2', 'Killer Hamster', 'Plushie', 30.0, 'Fanfavorite');
 
 INSERT INTO Award(Name, AwardJahr) VALUES('Most silliest', 2022);
 INSERT INTO Award(Name, AwardJahr) VALUES('Fanfavorite', 2012);
