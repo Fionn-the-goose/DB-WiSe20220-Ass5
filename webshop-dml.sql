@@ -10,6 +10,10 @@ INSERT INTO Produkt(ProduktNr, Name, Typ, Preis) VALUES('C-12', 'Negate', 'Magic
 INSERT INTO Produkt(ProduktNr, Name, Typ, Preis) VALUES('C-10', 'Der Ur-Drache', 'Magic_Karte', 129.99);
 INSERT INTO Produkt(ProduktNr, Name, Typ, Preis) VALUES('M-2', 'Killer Hamster', 'Plushie', 30.0);
 
-INSERT INTO Award(Name, AwardJahr)VALUES('Most silliest', 2022);
-INSERT INTO Award(Name, AwardJahr)VALUES('Fanfavorite', 2012);
-INSERT INTO Award(Name, AwardJahr)VALUES('Most Hated', 2015);
+INSERT INTO Award(Name, AwardJahr) VALUES('Most silliest', 2022);
+INSERT INTO Award(Name, AwardJahr) VALUES('Fanfavorite', 2012);
+INSERT INTO Award(Name, AwardJahr) VALUES('Most Hated', 2015);
+
+INSERT INTO Bestellung(BestellNr, KundenNr, ProduktNr, Datum, Rechnung) VALUES('120', '10001', 'M-2', "10.08.2020", "Coole Rechnung1");
+INSERT INTO Bestellung(BestellNr, KundenNr, ProduktNr, Datum, Rechnung) VALUES('110', '10001', 'M-2', "24.12.2022", "Coole Rechnung2");
+INSERT INTO Bestellung(BestellNr, KundenNr, ProduktNr, Datum, Rechnung) VALUES('140', '10001', 'M-2', "10.09.2019", "Coole Rechnung3");

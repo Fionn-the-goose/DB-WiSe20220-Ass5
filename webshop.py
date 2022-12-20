@@ -24,50 +24,37 @@ class Database:
             self.initialize(Path(ddl_path), Path(dml_path))
 
     def initialize(self, ddl_path: Path, dml_path: Path):
-        """ TODO Create the .sqlite database (self.database_path)."""
-        #self.da
+        """ open the file """
         con = sqlite3.connect(self.database_path)
         cur = con.cursor()
 
-        #con_ddl = sqlite3.connect(ddl_path)
-        #con_dml = sqlite3.connect(dml_path)
-        #cur_ddl = con_ddl.cursor()
-        #cur_dml = con_dml.cursor()
-        #cur.execute('''CREATE TABLE stocks
-        #               (date text, trans text, symbol text, qty real, price real)''')
-        
-        #ddl_file = open("webshop-ddl.sql", 'r')
+        """ generating from File """
         ddl_file = open(ddl_path, 'r')
-        #dml_file = open("webshop-dml.sql", 'r')
-        
         for line in ddl_file:
             cur.execute(line)
         con.commit()
 
+        """ filling Generated Database """
         dml_file = open(dml_path, 'r')
         for line in dml_file:
-            print(line)
+            #print(line)
             cur.execute(line)
 
         con.commit()
         con.close()
         return None
-        #for row in cur_dml:
-        #    cur_dml.execute(row)
-
-        """TODO Create the schema by reading the ddl file line wise and executing the sql commands.
-        TODO Insert all data by reading the dml file line wise and executing the sql commands.
-
-        :param ddl_path: Path to the .sql file that contains the data definition commands.
-        :param dml_path: Path to the .sql file that contains the data manipulation commands.
-        :return: None
-        """
-        logging.debug("Initializing Database")
-        raise NotImplementedError()
 
     def query(self, query: str):
+        con = sqlite3.connect(self.database_path)
+        cur = con.cursor()
+        output = ""
+        for row in cur.execute(query):
+            print(row)
+            #output = output+"\n"+row
+        con.commit()
+        con.close()
+        return output
         """ TODO execute the query against the database. Return the results.
-
         :param query: The SQL query given with the CLI as a string.
         :return: The results.
         """
@@ -76,6 +63,7 @@ class Database:
 
 
 def pretty_print(sqlite3_results):
+    """ sty there was no time sadly """
     """ TODO Format the results of the query so they look nice. (not graded)
     :param sqlite3_results: the results returned from Database.query()
     :return: A string.
